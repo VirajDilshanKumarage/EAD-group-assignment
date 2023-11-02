@@ -5,8 +5,13 @@ const cors = require("cors");
 require('dotenv').config();
 const app = express();
 
+const cartRoutes = require('./routes/cartRoutes');
+
 app.use(bodyParser.json());
 app.use(cors());
+
+// import routes
+app.use('/cart', cartRoutes);
 
 const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URL;
