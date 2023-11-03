@@ -47,29 +47,28 @@ exports.addToCart = async (req, res) => {
   const { customerId, productId, quantity, price } = req.body;
 
   try {
-      // add it to the cart and update the inventory
-      const cartItem = await CartItem.findOne({ customerId, productId });
+    let cartItem = await CartItem.findOne({ customerId, productId });
 
-      if (cartItem) {
-        cartItem.quantity += quantity;
-      } else {
-        cartItem = new CartItem({
-          customerId,
-          productId,
-          quantity,
-          price,
-        });
-      }
+    if (cartItem) {
+      cartItem.quantity += quantity;
+    } else {
+      cartItem = new CartItem({
+        customerId,
+        productId,
+        quantity,
+        price,
+      });
+    }
 
-      await cartItem.save();
+    await cartItem.save();
 
-      res.status(200).json({ message: 'Item added to the cart successfully' });
-    
+    res.status(200).json({ message: 'Item added to the cart successfully' });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while adding the item to the cart' });
   }
 };
+
 
 // ---------Function to update the quantity of a specific cart item for a specific customer----------------
 exports.updateCartItemQuantity = async (req, res) => {
