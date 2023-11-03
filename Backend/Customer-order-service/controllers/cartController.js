@@ -1,5 +1,4 @@
 const CartItem = require('../models/cartItems');
-const InventoryService = require('../services/InventoryManagerService');
 
 // --------------Function to get cart items for a specific customer------------------
 exports.getCartItems = async (req, res) => {
@@ -48,10 +47,7 @@ exports.addToCart = async (req, res) => {
   const { customerId, productId, quantity, price } = req.body;
 
   try {
-    const isAvailable = await InventoryService.isProductAvailable(productId, quantity);
-
-    if (isAvailable) {
-      // If the product is available, add it to the cart and update the inventory
+      // add it to the cart and update the inventory
       const cartItem = await CartItem.findOne({ customerId, productId });
 
       if (cartItem) {
@@ -66,12 +62,9 @@ exports.addToCart = async (req, res) => {
       }
 
       await cartItem.save();
-      // await InventoryService.updateInventoryOnAdd(productId, quantity);
 
       res.status(200).json({ message: 'Item added to the cart successfully' });
-    } else {
-      res.status(400).json({ error: 'Product is not available in the inventory' });
-    }
+    
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred while adding the item to the cart' });
@@ -95,8 +88,6 @@ exports.updateCartItemQuantity = async (req, res) => {
 
     await cartItem.save();
 
-    // await InventoryService.updateInventoryOnUpdateOrDelete(productId, previousQuantity, quantity);
-
     res.status(200).json({ message: 'Cart item quantity updated successfully' });
   } catch (error) {
     console.error(error);
@@ -115,11 +106,7 @@ exports.deleteCartItem = async (req, res) => {
       return res.status(404).json({ error: 'Cart item not found' });
     }
 
-    // const previousQuantity = cartItem.quantity;
-
     await cartItem.remove();
-
-    // await InventoryService.updateInventoryOnUpdateOrDelete(productId, previousQuantity, 0);
 
     res.status(200).json({ message: 'Cart item deleted successfully' });
   } catch (error) {
@@ -139,11 +126,7 @@ exports.deleteCartItem = async (req, res) => {
       return res.status(404).json({ error: 'Cart item not found' });
     }
 
-    // const previousQuantity = cartItem.quantity;
-
     await cartItem.deleteOne();
-
-    // await InventoryService.updateInventoryOnUpdateOrDelete(productId, previousQuantity, 0);
 
     res.status(200).json({ message: 'Cart item deleted successfully' });
   } catch (error) {
