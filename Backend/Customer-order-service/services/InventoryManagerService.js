@@ -22,19 +22,6 @@ class InventoryService {
         }
     }
 
-    // Function to update inventory in the  inventory service (use this, if we need to update inventory with cart updates )
-    //   async updateInventory(productId, previousQuantity, newQuantity) {
-    //     try {
-    //       await axios.post(`${inventoryServiceBaseURL}/update-inventory/${productId}`, {
-    //         previousQuantity,
-    //         newQuantity,
-    //       });
-    //     } catch (error) {
-    //       console.error(error);
-    //       throw new Error('Error communicating with the inventory service');
-    //     }
-    //   }
-
 }
 
 module.exports = new InventoryService();
