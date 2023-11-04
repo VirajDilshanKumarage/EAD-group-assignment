@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaUser, FaSignOutAlt } from 'react-icons/fa';
-import './NavBar.css'; // Import your CSS file
+import './NavBar.css'; 
 
 const NavBar: React.FC = () => {
   return (

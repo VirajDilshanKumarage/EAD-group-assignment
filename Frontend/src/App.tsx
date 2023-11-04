@@ -42,7 +42,7 @@ const App: React.FC = () => {
           element={isLoggedIn ? <CustomerDashboard /> : <Navigate to="/customer-dashboard" />} // Use the correct route
         />
 
-        <Route path="/customer-dashboard/add-to-cart" element={<Cart/>} />
+        <Route path="/customer-dashboard/add-to-cart/:customerId" element={<Cart />} />
 
         <Route
           path="/inventory-dashboard"

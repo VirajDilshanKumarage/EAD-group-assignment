@@ -15,13 +15,16 @@
   }
   
   .cart-item .productImage {
-    flex: 1;
+    flex: 2;
   }
   .cart-item .productInfo {
-    flex: 3;
+    flex: 6;
   }
   .cart-item .quantityChange {
     flex: 1;
+  }
+  .cart-item .deleteItem{
+    flex:1;
   }
   .cart-item .productImage img {
     height: 120px;
@@ -50,9 +53,21 @@
     
   }
   
-  .icon-qty {
+  .icon-qty, {
     font-size: 28px; 
     color: rgb(32, 01, 13,0.7);
     margin: 0 10px; 
     cursor:pointer;
+  }
+
+  .deleteItem {
+    font-size: 20px; 
+    margin: 35px 0; 
+    cursor:pointer;
+  }
+
+  .deleteItem:hover {
+    margin: 35px 0; 
+    cursor:pointer;
+    color:red;
   }
