@@ -10,6 +10,7 @@ import DeliveryDashboard from './Dashboards/DeliveryDashboard';
 import RegisterForm from './Forms/RegisterForm';
 import GetOPTForm from './Forms/GetOPT';
 import PasswordResetForm from './Forms/ResetPassword';
+import Cart from './Dashboards/Cart/Cart';
 
 
 
@@ -40,6 +41,8 @@ const App: React.FC = () => {
           path="/customer-dashboard"
           element={isLoggedIn ? <CustomerDashboard /> : <Navigate to="/customer-dashboard" />} // Use the correct route
         />
+
+        <Route path="/customer-dashboard/add-to-cart" element={<Cart/>} />
 
         <Route
           path="/inventory-dashboard"
