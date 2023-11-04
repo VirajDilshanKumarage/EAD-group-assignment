@@ -1,7 +1,8 @@
 /* RabbitMQ */
 const amqp = require("amqplib");
 
-const msg = {number:79}
+const msg = {email:"isurugamageinfo@gmail.com"}
+//const msg = {email:"isurumadushangamage99@gmail.com"}
 //connect();
 
 const connect = async (req, res, next) => {
@@ -22,10 +23,6 @@ const connect = async (req, res, next) => {
     }
 }
 
-// async function connect() {
 
-  
-
-// }
 
 exports.connect = connect;
