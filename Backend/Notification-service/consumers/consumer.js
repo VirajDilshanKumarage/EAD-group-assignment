@@ -24,9 +24,10 @@ let mailGenerator = new MailGen({
 
 let response = {
     body:{
-        title: 'EcomEAD!',
-        intro:"Order Confirmation!",
-        greeting: 'Dear Sir/Madam',
+        title: 'Welcome to EcomEAD!',
+        name:'Dear Sir/Madam',
+        intro:"Your order is being processed, and you will receive an email once it's on its way. If you have any questions or need assistance, please don't hesitate to contact our support team at ecomeadinfo@gmail.com.",
+        outro:"Thank you for choosing EcomEAD!"
     }
 }
 
@@ -48,14 +49,14 @@ async function connect() {
             
             try{
         
-                let message = {
+                let emailMessage = {
                     from:EMAIL,
                     to:input.email,
                     subject:"Order Confirmation!",
                     html:mail
                 }
 
-                transporter.sendMail(message, (err, info) => {
+                transporter.sendMail(emailMessage, (err, info) => {
                     if (err) {
                         console.log(`Error sending Message ${err}`);
                         return channel.nack(message);
