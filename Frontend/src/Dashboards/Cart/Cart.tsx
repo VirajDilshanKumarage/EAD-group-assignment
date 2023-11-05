@@ -4,7 +4,7 @@ import CartItem from '../../Components/CartItem/CartItem';
 import './Cart.css';
 import { BsCart4 } from "react-icons/bs";
 import NavBar from '../../Components/NavBar/NavBar';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 
 interface CartItemData {
@@ -13,7 +13,7 @@ interface CartItemData {
     quantity: number;
     price: number;
     totalItemPrice: number;
-    productId:string;
+    productId: string;
 }
 
 const Cart: React.FC = () => {
@@ -66,7 +66,7 @@ const Cart: React.FC = () => {
                                 quantity={item.quantity}
                                 price={item.price}
                                 totalItemPrice={item.totalItemPrice}
-                                customerId={customerId|| ''}
+                                customerId={customerId || ''}
                                 productId={item.productId}
                             />
                         ))
@@ -91,7 +91,11 @@ const Cart: React.FC = () => {
                                 <td>Rs.{totalPrice.toFixed(2)}</td>
                             </tr>
                         </table>
-                        <button className="purchase-button">Checkout</button>
+                        <button className="purchase-button">
+                            <Link to={`/customer-dashboard/checkout/${customerId}`} className="custom-link">
+                                Checkout
+                            </Link>
+                        </button>
                     </div>
                 </div>
             </div>
