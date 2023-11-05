@@ -1,4 +1,4 @@
-const Order = require('../../models/settings-models/command');
+const Order = require('../models/order');
 const sendCancelOrderToInventory = require('../services/deliveryService');
 const sendModifyOrderToDelivery = require('../services/deliveryService');
 
@@ -45,19 +45,19 @@ const deleteOrderByCustomerID = async (req, res, next) => {
 };
 
 const createOrderForCustomer = async (req, res, next) => {
-  const customerID = req.body.customerID;
-  const itemDetails = req.body.itemDetails;
+  const customerId = req.body.customerId;
+  const items = req.body.items;
   const status = req.body.status;
   const deliveryAddress = req.body.deliveryAddress;
-  const date = req.body.date;
+  const orderDate = req.body.orderDate;
 
   try {
     const newOrder = new Order({
-      customerID: customerID,
-      itemDetails: itemDetails,
+      customerId: customerId,
+      items: items,
       status: status,
       deliveryAddress: deliveryAddress,
-      date: date,
+      orderDate: orderDate,
     });
 
     // Save the new order to the database
