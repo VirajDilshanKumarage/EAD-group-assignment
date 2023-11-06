@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const cartController = require('../controllers/cartController');
+const controllerFactory = require('../controllers/controllerFactory');
+
+const cartController = controllerFactory.createCartController(); // Use the factory
 
 // Get cart items for a customer
 router.get('/get-cart-items/:customerId', cartController.getCartItems);
