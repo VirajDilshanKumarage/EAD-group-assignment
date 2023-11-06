@@ -6,11 +6,13 @@ require('dotenv').config();
 const app = express();
 
 const orderRoutes = require('./routes/order');
+const cartRoutes = require('./routes/cartRoutes');
 
 app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/', orderRoutes);
+app.use('/cart', cartRoutes);
 
 const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URL;
