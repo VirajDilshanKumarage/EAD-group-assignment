@@ -1,7 +1,6 @@
 /* RegisterForm.css */
 
-.back-ground1{
-
+.back-ground1 {
   background: url('../Asset/backgroud_image.jpg') no-repeat center center fixed;
   background-size: cover;
   background-color: #121212; /* Dark background color */
@@ -12,7 +11,6 @@
   align-items: center;
   justify-content: center;
   height: 100vh; /* Full viewport height */
-  
 }
 
 .container {
@@ -31,8 +29,6 @@ h1 {
   text-align: center;
 }
 
-
-
 form {
   display: flex;
   flex-direction: column;
@@ -43,17 +39,14 @@ form {
   margin: auto; /* Add this line to center-align the form */
 }
 
-
-.page{
+.page {
   display: flex;
   flex-direction: column;
-  background-color:#0b2f00; /* Black form background color */
+  background-color: #0b2f00; /* Black form background color */
   padding: 20px;
   width: 350px;
   border-radius: 5px;
   border-radius: 7px;
-
-  
 }
 
 label {
@@ -88,9 +81,6 @@ button {
 button:hover {
   background-color: #45a049;
 }
-
-
-
 
 .pointer {
   cursor: pointer;
