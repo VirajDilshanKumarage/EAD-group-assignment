@@ -107,8 +107,8 @@ public class UserService {
     public void sendResetPasswordVerityEmail(String email,String verifyCode){
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(email);
-            message.setSubject("Reset Verification Code");
-            message.setText(verifyCode);
+            message.setSubject("Reset Verification Code\nDear Valuable Customer,\nThis is your verification code");
+            message.setText("verification code - "+verifyCode+"\n\nthis is valid only for 2 minutes");
             javaMailSender.send(message);
             System.out.print("email sent");
             //then call the deleteOptAuto Method in UserService
