@@ -14,5 +14,7 @@ const postSchema = new mongoose.Schema({
     }
 });
 
+const Notification = mongoose.model('Notification',postSchema);
+module.exports =  Notification;
 
-module.exports = mongoose.model('Notification',postSchema);
+//module.exports = mongoose.model('Notification',postSchema);
