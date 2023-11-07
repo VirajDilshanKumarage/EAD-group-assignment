@@ -128,7 +128,20 @@ const EmployeeDetails: React.FC = () => {
         },
         body: JSON.stringify(employeeData),
       });
-      window.location.reload();
+      
+
+      const registrationSuccessful = await response.json();
+
+      if (registrationSuccessful === 1) {
+        alert('Account already exists for enterd email.  try with another email');
+        
+      } else if (registrationSuccessful === 2) {
+        alert('Registration successful');
+        window.location.reload();
+        
+      }
+
+      
 
       if (response.ok) {
         // Employee added successfully, you can update the state or perform any other action

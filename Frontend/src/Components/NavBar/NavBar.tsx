@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Modal from '../../Dashboards/UpdateProfileModal';
 
 const NavBar: React.FC = () => {
-  type NullableType = any | null;
+ 
 
   const [customerLogedId, setUserId] = useState(0);
   const location = useLocation();
@@ -27,6 +27,10 @@ const NavBar: React.FC = () => {
   const goToLoginPage = () => {
     navigate('/');
   };
+
+  const goToCartPage = () => {
+    navigate('/customer-dashboard');
+  };
   
 
 
@@ -45,7 +49,7 @@ const NavBar: React.FC = () => {
           setName(userData.name);
           setRole(userData.role);
            
-          console.log('User customer Data-name kk:'+ cus_name);
+          console.log('User customer Data-name kkj:'+ cus_name);
          
           
         } else {
@@ -68,11 +72,11 @@ const NavBar: React.FC = () => {
         <Modal isOpen={isModalOpen} onClose={closeModal} userLoginId={customerLogedId} />
       </div>
       <div className="profile-icons">
-        <Link to={`/customer-dashboard/add-to-cart`} className="custom-link" data-tooltip="Cart" >
+        <div onClick={goToCartPage} className="custom-link" data-tooltip="Cart" >
           <div className="icon" data-tooltip="Cart">
             <FaCartPlus />
           </div>
-        </Link>
+        </div>
 
         <div className="icon" data-tooltip="User" onClick={openModal}>
           <FaUser />

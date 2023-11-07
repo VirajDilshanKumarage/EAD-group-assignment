@@ -4,7 +4,7 @@ import CartItem from '../../Components/CartItem/CartItem';
 import './Cart.css';
 import { BsCart4 } from "react-icons/bs";
 import NavBar from '../../Components/NavBar/NavBar';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 
 interface CartItemData {
@@ -54,6 +54,12 @@ const Cart: React.FC = () => {
         setTotalItems(items);
     }, [cartItems]);
 
+    const navigate = useNavigate();
+
+    const goToChekOutPage = () => {
+        navigate('/customer-dashboard/checkout');
+      };
+
     return (
         <div className="cart-container">
             <NavBar />
@@ -94,10 +100,10 @@ const Cart: React.FC = () => {
                                 <td>Rs.{totalPrice.toFixed(2)}</td>
                             </tr>
                         </table>
-                        <button className="purchase-button">
-                            <Link to={`/customer-dashboard/checkout/${customerId}`} className="custom-link">
+                        <button className="purchase-button" onClick={goToChekOutPage}>
+                            
                                 Checkout
-                            </Link>
+                            
                         </button>
                     </div>
                 </div>

@@ -31,6 +31,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, userLoginId}) => {
     const userId = userLoginId;
     console.log("modal id="+userId);
 
+   if(formData.email===''||formData.name===''||formData.phoneNumber===''){
+    alert('All Fields are required');
+   }else{
+
     const response = await fetch(`http://localhost:8080/api/users/update/${userId}`, {
       method: 'PUT',
       headers: {
@@ -56,10 +60,10 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, userLoginId}) => {
       
     }
 
-      
-      
-      
-  };
+  }
+   
+
+};
 
 
   

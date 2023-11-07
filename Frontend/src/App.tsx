@@ -42,9 +42,11 @@ const App: React.FC = () => {
           path="/admin-dashboard"
           element={isLoggedIn ? <AdminDashboard /> : <Navigate to="/" />} // Use the correct route
         />
-        <Route
+      
+
+      <Route
           path="/customer-dashboard"
-          element={isLoggedIn ? <Checkout /> : <Navigate to="/" />}
+          element={isLoggedIn ? <Cart /> : <Navigate to="/" />}
             // Use the correct route
         />
 
@@ -58,7 +60,7 @@ const App: React.FC = () => {
           element={isLoggedIn ? <DeliveryDashboard /> : <Navigate to="/" />} // Use the correct route
         />
 
-        <Route path="/customer-dashboard/add-to-cart" element={<Cart />} />
+        
 
         <Route path="/customer-dashboard/checkout" element={<Checkout/>} />
 
