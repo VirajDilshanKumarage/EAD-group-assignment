@@ -12,6 +12,8 @@ import GetOPTForm from './Forms/GetOPT';
 import PasswordResetForm from './Forms/ResetPassword';
 import CustomerDetails from './Page/CustomerDetails';
 import EmployeeDetails from './Page/EmployeeDetails';
+import Cart from './Dashboards/Cart/Cart';
+import Checkout from './Dashboards/Checkout/Checkout';
 
 
 
@@ -42,7 +44,8 @@ const App: React.FC = () => {
         />
         <Route
           path="/customer-dashboard"
-          element={isLoggedIn ? <CustomerDashboard /> : <Navigate to="/" />} // Use the correct route
+          element={isLoggedIn ? <Checkout /> : <Navigate to="/" />}
+            // Use the correct route
         />
 
         <Route
@@ -54,6 +57,12 @@ const App: React.FC = () => {
           path="/delivery-dashboard"
           element={isLoggedIn ? <DeliveryDashboard /> : <Navigate to="/" />} // Use the correct route
         />
+
+        <Route path="/customer-dashboard/add-to-cart" element={<Cart />} />
+
+        <Route path="/customer-dashboard/checkout" element={<Checkout/>} />
+
+
 
         <Route path="" element={<LoginForm onLogin={handleLogin} />} />
 

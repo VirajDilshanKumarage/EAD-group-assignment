@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.user.service;
 
 
 
@@ -6,12 +6,12 @@ package com.example.demo.service;
 
 // UserService.java
 
-import com.example.demo.dto.ResetPasswordDTO;
-import com.example.demo.dto.SaveDTO;
-import com.example.demo.entity.User;
-import com.example.demo.entity.Opt;
-import com.example.demo.repository.UserRepository;
-import com.example.demo.repository.OptRepository;
+import com.example.user.dto.ResetPasswordDTO;
+import com.example.user.dto.SaveDTO;
+import com.example.user.entity.User;
+import com.example.user.entity.Opt;
+import com.example.user.repository.UserRepository;
+import com.example.user.repository.OptRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

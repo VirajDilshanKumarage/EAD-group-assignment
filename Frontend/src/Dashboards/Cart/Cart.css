@@ -1,0 +1,79 @@
+.cart-container .cart-content .cart-items {
+    padding: 10px;
+  }
+  
+  .cart-content {
+    display: flex;
+    overflox-y: scroll;
+    margin-top:-50px;
+  }
+  
+  .cart-container h1{
+      color:rgba(1, 50, 32, 0.9);
+      text-align:left;
+      padding: 20px;
+      margin-top:-13px;
+  }
+  .cart-container h1 i{
+      margin-left:20px;
+  }
+  
+  .cart-items {
+    flex: 3;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 0 5px;
+    height: 550px;
+    overflow-y: scroll;
+  }
+  .cart-items::-webkit-scrollbar {
+    width: 20px;
+    color: white;
+  }
+  
+  .cart-items h2 {
+    text-align: left;
+    color: white;
+    background: rgba(1, 50, 32, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .sidebar {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    margin-left: 10px;
+  }
+  .sidebar h2 {
+    color: white;
+    text-align: left;
+    background: rgba(1, 50, 32, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .total-info {
+    background: rgba(1, 50, 32, 0.3);
+    border-radius: 8px;
+    padding: 10px;
+  }
+  
+  .total-info p {
+    color: #015032;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .total-info table td:nth-child(2) {
+      padding-left: 160px;
+    }
+  
+  .purchase-button {
+    background-color: rgb(32, 01, 13,0.9);
+    padding: 10px 80px;
+    margin:10px 48px 0px 48px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 200;
+  
+  }

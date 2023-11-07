@@ -100,7 +100,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
         navigate('/delivery-dashboard');
       } else if (loginAs === 'customer') {
         // Redirect to customer dashboard
-        navigate('/customer-dashboard');
+        navigate('/customer-dashboard', { state:  {userId} });
       } else {
         alert('Unknown role received from the server');
       }

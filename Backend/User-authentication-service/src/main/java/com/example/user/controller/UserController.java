@@ -1,15 +1,15 @@
-package com.example.demo.controller;
+package com.example.user.controller;
 
 
 
 
-import com.example.demo.dto.EmailDTO;
-import com.example.demo.dto.LoginDTO;
-import com.example.demo.dto.ResetPasswordDTO;
-import com.example.demo.dto.SaveDTO;
-import com.example.demo.entity.User;
-import com.example.demo.entity.Opt;
-import com.example.demo.service.UserService;
+import com.example.user.dto.EmailDTO;
+import com.example.user.dto.LoginDTO;
+import com.example.user.dto.ResetPasswordDTO;
+import com.example.user.dto.SaveDTO;
+import com.example.user.entity.User;
+import com.example.user.entity.Opt;
+import com.example.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,32 +1,17 @@
-package com.example.demo.entity;
+package com.example.user.dto;
 
-// Customer.java
+public class SaveDTO {
 
-
-import javax.persistence.*;
-import java.time.LocalDate;
-
-@Entity
-@Table(name = "users")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private String phoneNumber;
     private String email;
     private String password;
-    private LocalDate registerDate;
+    private String confirmPassword;
     private String nicNumber;
+
     private String role;
-
-
-
-
-
-
 
 
     public Long getId() {
@@ -65,34 +50,25 @@ public class User {
         return password;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
 
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
 
     public void setPassword(String password) {
-
-
         this.password = password;
-
     }
+
 
     public String getRole() {
         return role;
     }
 
     public void setRole(String role) {
-
-        if(role!=null){
-            this.role=role;
-        }else {
-            this.role = "customer";
-        }
-    }
-
-    public LocalDate getRegisterDate() {
-        return registerDate;
-    }
-
-    public void setRegisterDate(LocalDate registerDate) {
-        this.registerDate = registerDate;
+        this.role = role;
     }
 
     public String getNicNumber() {
@@ -103,4 +79,3 @@ public class User {
         this.nicNumber = nicNumber;
     }
 }
-
