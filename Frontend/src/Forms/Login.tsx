@@ -53,7 +53,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
 
 
     try {
-      const userDataResponse = await fetch(`http://localhost:8080/api/users/getUserByEmail/${email}`);
+      const userDataResponse = await fetch(`http://localhost:8080/api/v1/users/getUserByEmail/${email}`);
       
       if (userDataResponse.ok) {
         const userData = await userDataResponse.json();
@@ -75,7 +75,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
     }
 
     // Perform API call to login endpoint
-    const response = await fetch('http://localhost:8080/api/users/login', {
+    const response = await fetch('http://localhost:8080/api/v1/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

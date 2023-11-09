@@ -53,7 +53,7 @@ const EmployeeDetails: React.FC = () => {
 
 
       try {
-        const response = await fetch('http://localhost:8080/api/users/getAllUsers');
+        const response = await fetch('http://localhost:8080/api/v1/users/getAllUsers');
         const data = await response.json();
         // Filter out customers whose role is not 'customer'
         const filteredEmployees = data.filter((employee: Employee) => employee.role !== 'customer');
@@ -78,7 +78,7 @@ const EmployeeDetails: React.FC = () => {
 
   const handleDelete = async (employeeId: number) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/users/delete/${employeeId}`, {
+      const response = await fetch(`http://localhost:8080/api/v1/users/delete/${employeeId}`, {
         method: 'DELETE',
       });
 
@@ -121,7 +121,7 @@ const EmployeeDetails: React.FC = () => {
     }
     else{
     try {
-      const response = await fetch('http://localhost:8080/api/users/register', {
+      const response = await fetch('http://localhost:8080/api/v1/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

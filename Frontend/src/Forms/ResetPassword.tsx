@@ -60,7 +60,7 @@ const PasswordResetForm = () => {
     } else {
       
         // Perform API call to backend endpoint
-        const response = await fetch('http://localhost:8080/api/users/changeThePasswordWithVerifyCode', {
+        const response = await fetch('http://localhost:8080/api/v1/users/changeThePasswordWithVerifyCode', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

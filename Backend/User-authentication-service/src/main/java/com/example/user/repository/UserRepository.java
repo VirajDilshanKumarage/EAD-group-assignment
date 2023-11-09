@@ -2,8 +2,9 @@ package com.example.user.repository;
 
 
 
-
-// CustomerRepository.java
+/* *
+this is the Repo of User entity its extends from JpaRepository
+*/
 
 import com.example.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;

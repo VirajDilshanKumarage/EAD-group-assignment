@@ -3,8 +3,9 @@ package com.example.user.service;
 
 
 
-
-// UserService.java
+/* *
+* this is the UserService it is having all the methods to approach the requirement of the controller
+*/
 
 import com.example.user.dto.ResetPasswordDTO;
 import com.example.user.dto.SaveDTO;
@@ -33,7 +34,7 @@ public class UserService {
     @Autowired
     private OptRepository optRepository;
     private User user = new User();
-    private Opt opt = new Opt();
+    private final Opt opt = new Opt();
     private Random verificationCode;
 
 
@@ -65,7 +66,7 @@ public class UserService {
                     user.setEmail(saveDTO.getEmail());
                     user.setPassword(encryptedPassword);
                     user.setNicNumber(saveDTO.getNicNumber());
-                    user.setRegisterDate(LocalDate.now());
+                    user.setRegisterDate(LocalDate.now()); // here we get the local date as the user registration date instead it's getting as a user input while customer registration process or employee adding process.
                     user.setRole(saveDTO.getRole());
                 return UserService.this.useRepository.save(user);
             }else {
@@ -113,7 +114,6 @@ public class UserService {
             System.out.print("email sent");
             //then call the deleteOptAuto Method in UserService
             deleteOptAuto(email);
-
     }
 
 

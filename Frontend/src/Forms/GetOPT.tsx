@@ -43,7 +43,7 @@ const GetOPTForm: React.FC = () => {
         } else {
           alert('Please enter a valid email address');
         }
-        const response = await fetch('http://localhost:8080/api/users/requestVerifyCodeForForgotPassword', {
+        const response = await fetch('http://localhost:8080/api/v1/users/requestVerifyCodeForForgotPassword', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

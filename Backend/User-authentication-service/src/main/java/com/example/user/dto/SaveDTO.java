@@ -1,16 +1,20 @@
 package com.example.user.dto;
 
+
+/* *
+* this dto is used to get register inputs of the customer
+*/
+
+
 public class SaveDTO {
 
     private Long id;
-
     private String name;
     private String phoneNumber;
     private String email;
     private String password;
     private String confirmPassword;
     private String nicNumber;
-
     private String role;
 
 

@@ -20,7 +20,7 @@ const CustomerDetails: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8080/api/users/getAllUsers');
+        const response = await fetch('http://localhost:8080/api/v1/users/getAllUsers');
         const data = await response.json();
         // Filter out customers whose role is not 'customer'
         const filteredCustomers = data.filter((customer: Customer) => customer.role === 'customer');

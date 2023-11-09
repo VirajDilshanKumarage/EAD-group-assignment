@@ -1,6 +1,11 @@
 package com.example.user.entity;
 
-// Customer.java
+/* *
+* this is the user entity that make the users table in database
+* all the details of the user who involving  with the system are saved in this table
+* here in the setRole. the value of the role argument is null mean it is a customer registration thr role definitely must be "customer"
+* but if role is not null mean the admin try to add an employee to the system with details in that case admin definitely has to set role of the employee then role is not null the corresponding argument value must be set as the role
+*/
 
 
 import javax.persistence.*;
@@ -13,7 +18,6 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String phoneNumber;
     private String email;

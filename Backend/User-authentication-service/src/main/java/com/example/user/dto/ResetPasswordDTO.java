@@ -1,5 +1,10 @@
 package com.example.user.dto;
 
+
+/* *
+* this dto use to get detail that related with reset password
+*/
+
 public class ResetPasswordDTO {
 
     private String password;

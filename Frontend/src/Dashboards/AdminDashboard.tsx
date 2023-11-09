@@ -27,7 +27,7 @@ const AdminDashboard = () => {
     // Fetch customer data when the component mounts
     const fetchCustomerData = async () => {
       try {
-        const userDataResponse = await fetch(`http://localhost:8080/api/users/getUserById/${loginId}`);
+        const userDataResponse = await fetch(`http://localhost:8080/api/v1/users/getUserById/${loginId}`);
       
         if (userDataResponse.ok) {
           const userData = await userDataResponse.json();

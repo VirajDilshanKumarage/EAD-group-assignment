@@ -1,8 +1,6 @@
 package com.example.user.controller;
 
 
-
-
 import com.example.user.dto.EmailDTO;
 import com.example.user.dto.LoginDTO;
 import com.example.user.dto.ResetPasswordDTO;
@@ -21,17 +19,30 @@ import java.util.Objects;
 import java.util.Optional;
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+/*
+* This is the user controller it is having  REST API s
+* GetMapping for get all user:- http://localhost:8080/api/v1/users/getAllUsers
+* GetMapping for get user by email:- http://localhost:8080/api/v1/users/getUserByEmail/{email}
+* GetMapping for get user by id:- http://localhost:8080/api/v1/users/getUserById/{id}
+* PostMapping for login:- http://localhost:8080/api/v1/users/login
+* PostMapping for register:- http://localhost:8080/api/v1/users/register
+* PostMapping for request the verification code to reset the password:- http://localhost:8080/api/v1/users/requestVerifyCodeForForgotPassword
+* PostMapping for reset the password with the verification code:- http://localhost:8080/api/v1/users/changeThePasswordWithVerifyCode
+* PutMapping for update the user details by id:- http://localhost:8080/api/v1/users/update/{id}
+* DeleteMapping for delete a user by id:- http://localhost:8080/api/v1/users/delete/{id}
+* DeleteMapping for delete all the user (for developer purpose):- http://localhost:8080/api/v1/users/delete
+* */
+
+
+@CrossOrigin(origins = "http://localhost:3000")//this is included to enable cross-origin resource sharing (CORS) with frontend. here we use frontend as react that's why the port is 3000
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/v1/users")
 public class UserController {
 
     @Autowired
     private UserService userService;
-
-    private Opt opt = new Opt();
-
-    private User customerWhoGotVerifyEmail = new User();
+    private final Opt opt = new Opt();
+    private final User customerWhoGotVerifyEmail = new User();
 
 
 
@@ -52,16 +63,12 @@ public class UserController {
     }
 
 
-
-
-
-
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginDTO loginRequest) {
         String email = loginRequest.getEmail();
         String password = loginRequest.getPassword();
 
-        // Validate email and password
+            // Validate email and password
         String login_as = userService.authenticateUser(email, password);
         if (login_as == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed. Invalid email or password.");
@@ -73,23 +80,20 @@ public class UserController {
 
 
 
-
-
-
-
     @PostMapping("/register")
     public int addCustomer(@RequestBody SaveDTO saveDTO) {
-
 
         Optional<User> existingCustomerOptional = userService.getUserByEmail(saveDTO.getEmail());
         if(existingCustomerOptional.isPresent()){
             User customer = existingCustomerOptional.get();
+            // here its return 1 when "Account already exists for entered email. Please log in. or try with another email"
             return 1;
         }
-
         if(userService.saveUser(saveDTO)!=null){
+            // here its return 2 when "Registration successful"
             return 2;
         }else {
+            // here its return 3 when "password confirmation is wrong or An error occurred during registration"
             return 3;
         }
     }
@@ -103,7 +107,6 @@ public class UserController {
             userService.updateOptTable(emailDTO.getEmail());
             return true;
         }
-
         return false;
     }
 
@@ -121,28 +124,16 @@ public class UserController {
         Optional<User> existingCustomerOptional = userService.getUserById(id);
 
         if (existingCustomerOptional.isPresent()) {
-
             if(userService.getUserByEmail(updatedCustomer.getEmail()).isPresent()) {
                 User checkCustomer = userService.getUserByEmail(updatedCustomer.getEmail()).get();
-
-
                 if (Objects.equals(checkCustomer.getId(), id)) {
-
-
                          userService.updateUser(existingCustomerOptional.get(), updatedCustomer);
                         return true;
-
-                } else {
-                    return false;
-                }
+                } else {return false;}
             }else {
-
-
-
                  userService.updateUser(existingCustomerOptional.get(),updatedCustomer);
-                return true;
+                 return true;
             }
-
         } else {
             // Handle case where customer with given id is not found
             throw new RuntimeException("Customer not found with id: " + id);
@@ -158,10 +149,7 @@ public class UserController {
         if (existingCustomerOptional.isPresent()) {
              userService.deleteUser(id);
             return "Delete successfully";
-        } else {
-
-            return "customer not found";
-        }
+        } else {return "customer not found";}
     }
 
     @DeleteMapping("/delete")
@@ -169,5 +157,7 @@ public class UserController {
         userService.deleteAll();
         return "All users are deleted";
     }
+
+
 }
 

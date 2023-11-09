@@ -35,7 +35,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, userLoginId}) => {
     alert('All Fields are required');
    }else{
 
-    const response = await fetch(`http://localhost:8080/api/users/update/${userId}`, {
+    const response = await fetch(`http://localhost:8080/api/v1/users/update/${userId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
