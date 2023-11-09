@@ -85,11 +85,11 @@ const AdminDashboard = () => {
   };
 
   const goToInventoryPage= () => {
-    navigate('/inventory');
+    navigate('/inventory-dashboard');
   };
 
   const goToDeliveryPage= () => {
-    navigate('/delivery');
+    navigate('/delivery-dashboard');
   };
   
   

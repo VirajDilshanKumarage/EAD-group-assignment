@@ -75,7 +75,7 @@ const PasswordResetForm = () => {
           navigate('/');
         } else {
           alert('Password reset failed. Please try again.');
-          navigate('/');
+          navigate('/get-opt');
         }
       
     }
