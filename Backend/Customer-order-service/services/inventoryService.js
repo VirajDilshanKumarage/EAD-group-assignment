@@ -14,6 +14,7 @@ const sendCancelOrderToInventory = async (order) => {
       'Error sending cancel order to inventory service:',
       error.message
     );
+    throw new Error('Cannot send the message to inventory service');
   }
 };
 

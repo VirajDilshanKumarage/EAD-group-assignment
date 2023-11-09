@@ -10,9 +10,11 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const cartRoutes = require('./routes/cartRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 
 // import routes
 app.use('/cart', cartRoutes);
+app.use('', orderRoutes);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

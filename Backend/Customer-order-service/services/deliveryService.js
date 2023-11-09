@@ -14,6 +14,7 @@ const sendModifyOrderToDelivery = async (order) => {
       'Error sending modify order to delivery service:',
       error.message
     );
+    throw new Error('Cannot send the message to deliver service');
   }
 };
 
