@@ -20,7 +20,7 @@ import java.util.Optional;
 
 
 /*
-* This is the user controller it is having  REST API s
+* This is the user controller it is having  REST APIs
 * GetMapping for get all user:- http://localhost:8080/api/v1/users/getAllUsers
 * GetMapping for get user by email:- http://localhost:8080/api/v1/users/getUserByEmail/{email}
 * GetMapping for get user by id:- http://localhost:8080/api/v1/users/getUserById/{id}
