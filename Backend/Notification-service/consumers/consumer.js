@@ -6,15 +6,9 @@ const nodeMailer = require("nodemailer");
 const notification = require('../models/notification.js');
 const mongoose = require('mongoose');
 const {Worker} = require("node:worker_threads");
-//require('./workerForHandlingDB.js')
+const database = require("../databaseConnection.js"); 
 
-const DB_URL = 'mongodb+srv://chandulakavishka0:ecomEAD@cluster0.bcd7kuy.mongodb.net/'
-
-mongoose.connect(DB_URL,)
-  .then(() => {
-    console.log('DB connected');
-  })
-  .catch((err) => console.log('DB connection error', err));
+database.connect();
 
 let config = {
   service: "gmail",
@@ -113,26 +107,7 @@ async function connect() {
           } else {
             console.log("Email sent successfully");
             channel.ack(message);
-
-            const worker = new worker('./workerForHandlingDB.js',{
-              email:input.email
-            });
-
-            worker.on('message',(message)=>{
-              console.log(message);
-            })
-            // try {
-            //   // Check if a document with the email exists in the database
-            //   const existingDocument = await notification.findOne({ email: input.email });
-            //   if (existingDocument) {
-            //     await notification.deleteOne({ email:input.email });
-            //     console.log("Email successfully sent. Document has been deleted from the");
-            //   }
-
-            // } catch (err) {
-            //   console.log("Error",err);
-            // }
-
+            databaseWorker(input.email);
           }
         });
 
@@ -146,5 +121,19 @@ async function connect() {
   }
 }
 
+const databaseWorker = async (email) => {
+  try {
+    // Check if a document with the email exists in the database
+    const existingDocument = await notification.findOne({ email });
+    if (existingDocument) {
+      await notification.deleteOne({ email });
+      console.log("Email successfully sent. Document has been deleted from the DB");
+    }else{
+      console.log("Email successfully sent. Document is not available in the DB");
+    }
+  } catch (err) {
+    console.log("Error",err);
+  }
+}
 
 

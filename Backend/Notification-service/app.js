@@ -1,8 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongoose = require('mongoose');
 const orderConfirmationRoutes = require("./routes/orderConfRoutes");
 const notificationRoute = require("./routes/notification");
+const database = require('./databaseConnection');
 
 const cors = require("cors");
 
@@ -23,13 +23,7 @@ app.get("/", (req, res, next) => {
 
 // app.listen(PORT);
 // console.log("Backend is up");
-
-
-mongoose.connect(DB_URL,)
-.then(() =>{
-    console.log('DB connected');
-})
-.catch((err) => console.log('DB connection error',err));
+database.connect();
 
 app.listen(PORT, () =>{
     console.log(`App is running on ${PORT}`);
