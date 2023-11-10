@@ -41,23 +41,26 @@ router.get('/', async (req, res, next) => {
 });
 
 router.get('/filter', async (req, res, next) => {
+    try {
+        let { status } = req.query; // Extract the 'status' from req.query
 
-    let { params } = req.body;
+        let resObj = await getDeliveryBy({ status: status });
 
-    let resObj = await getDeliveryBy(params);
+        console.log("data obj : ", resObj);
 
-    console.log("data obj : " + resObj);
-
-    res.json({ data: resObj });
-
+        res.json({ data: resObj }); // Send the response in JSON format
+    } catch (error) {
+        res.status(500).json({ error: error.message }); // Handle errors and send an appropriate response
+    }
 });
 
+
+
 router.post('/modify-order', async (req, res) => {
-    const orderDetails = req.body.orderDetails;
+    const orderDetails = req.body; // Corrected line
     const result = await modifyOrder(orderDetails);
     res.json(result);
-  });
-
+});
   router.delete('/:order_id', async (req, res) => {
     const order_id = req.params.order_id;
     const result = await deleteDelivery(order_id);

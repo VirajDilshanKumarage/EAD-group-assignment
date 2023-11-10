@@ -5,31 +5,28 @@ const mongoose = require('mongoose');
 const deliverySchema = new mongoose.Schema({
   customer_id: {
     type: String,
-    required: true,
+    // required: true,
   },
-  customer_name: {
-    type: String,
-     required: true,
-  },
+
   items: {
     type: [String],
-     required: true,
+    //  required: true,
   },
   date: {
-    type: Date,
+    type:String,
     // required: true,
   },
   address: {
     type: String,
-     required: true,
+    //  required: true,
   },
   status: {
     type: String,
-     required: true,
+    //  required: true,
   },
   order_id: {
     type: String,
-     required: true,
+    //  required: true,
   },
   estimated_date: {
     type: Date,

@@ -1,31 +1,24 @@
 const mongoose = require('mongoose');
 const deliveryModel = require('../models/delivery.js');
 
-// const createDelivery = async (data) => {
-//     try {
 
-//         const deliveryData = { ...data };
-
-//         const newDelivery = new deliveryModel(deliveryData);
-//         const savedDelivery = await newDelivery.save();
-
-//         console.log("Delivery created successfully");
-//         return savedDelivery;
-//     } catch (err) {
-//         // console.error("Failed to create delivery:", err);
-//         return {
-//             message: "Could Not Create Delivery",
-//             error: err.message,
-//         };
-//     }
-// }
 
 const updateDelivery = async (order_id, data) => {
     try {
-        const updatedDelivery = await deliveryModel.findOneAndUpdate({ order_id: order_id }, data, { new: true });
+        const updatedDelivery = await deliveryModel.findOneAndUpdate(
+            { order_id: order_id },
+            data,
+            { new: true }
+        );
+
         if (!updatedDelivery) {
-            throw new Error('Delivery not found');
+            return {
+                message: 'Delivery not found for order_id: ' + order_id,
+                error: 'Delivery not found',
+                status: 404, // HTTP 404 Not Found status code
+            };
         }
+
         return {
             message: 'Successfully Updated',
             data: updatedDelivery // Returning the updated delivery
@@ -34,9 +27,11 @@ const updateDelivery = async (order_id, data) => {
         return {
             message: 'Could Not Update Delivery',
             error: err.message,
+            status: 500, // HTTP 500 Internal Server Error status code
         };
     }
 };
+
 
 
 
@@ -58,9 +53,10 @@ const getAllDelivery = async () => {
 
 const getDeliveryBy = async (params) => {
     console.log('getting filtered deliveries');
-    try {
-        const deliveries = await deliveryModel.find(params);
+    console.log('Params:', params); // Add this line to log the received parameters
 
+    try {
+        const deliveries = await deliveryModel.find(params).exec();
         return deliveries;
     } catch (error) {
         return {
@@ -79,9 +75,10 @@ const getDeliveryBy = async (params) => {
     try {
       // Create a new order document in the database
       const newOrder = new Order({
-        orderId: orderDetails.orderId,
+        orderId: orderDetails._id,
+        customer_id: orderDetails.customerId,
         customerName: orderDetails.customerName,
-        address: orderDetails.address,
+        address: orderDetails.deliveryAddress,
         items: orderDetails.items,
       });
   
@@ -101,24 +98,23 @@ const getDeliveryBy = async (params) => {
     estimatedDate.setDate(estimatedDate.getDate() + 30);
   
     try {
-      const newDelivery = new deliveryModel({
-        customer_id: orderDetails.customer_id,
-        customer_name: orderDetails.customerName,
-        items: orderDetails.items,
-        date: orderDetails.date,
-        address: orderDetails.address,
-        status: orderDetails.status,
-        order_id: orderDetails.order_id,
-        estimated_date: orderDetails.estimated_date,
-      });
+        const newDelivery = new deliveryModel({
+            customer_id: orderDetails.customerId,
+            items: orderDetails.items,
+            date: orderDetails.orderdate,
+            address: orderDetails.deliveryAddress,
+            status: orderDetails.status,
+            order_id: orderDetails._id,
+            estimated_date: orderDetails.estimated_date,
+        });
   
-      await newDelivery.save();
-      return { message: 'Delivery modified successfully' };
+        await newDelivery.save();
+        return { message: 'Delivery modified successfully' };
     } catch (error) {
-      console.error('Error saving delivery to database:', error.message);
-      return { error: error.message };
+        console.error('Error saving delivery to database:', error.message);
+        return { error: error.message };
     }
-  };
+};
 
   const deleteDelivery = async (order_id) => {
     try {
