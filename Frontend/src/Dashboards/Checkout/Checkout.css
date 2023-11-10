@@ -1,0 +1,108 @@
+.checkout-page .details {
+  display: flex;
+  width: 100%;
+}
+
+.checkout-page .payment-details {
+  flex: 2;
+  height: 100%;
+}
+.checkout-page .items-details {
+  flex: 1;
+  height: 100%;
+}
+
+.checkout-page h2 {
+  margin: 25px;
+  text-align: center;
+  color: white;
+  background: rgba(1, 50, 32, 0.9);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.checkout-page .items-details ul,
+.checkout-page .payment-details-forms {
+  color: rgba(1, 50, 32, 0.9);
+  margin: 5px 25px;
+  background: rgba(1, 50, 32, 0.2);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.checkout-page .orderNow {
+  margin: 5px 15px;
+  padding: 10px;
+}
+
+.checkout-page .items-details ul li {
+  text-decoration: none;
+}
+
+.checkout-page ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.checkout-page li {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: rgba(249, 249, 249, 0.7);
+}
+
+.checkout-page p {
+  font-weight: bold;
+  color: #777;
+}
+
+.checkout-page ul p {
+  font-weight: bold;
+  color: red;
+  text-align: center;
+}
+
+.checkout-page .error-found-porducts {
+  margin-left: 25px;
+}
+
+.orderNow-button {
+  cursor: pointer;
+  width: 50%;
+  height: 7vh;
+  background-color: rgba(5, 117, 28, 0.9);
+  border-radius: 20px;
+  border-color: aqua;
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.orderInput {
+  border: 2px solid #ccc;
+  border-radius: 10px; /* Adjust the border-radius to control the curve */
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.orderInput:focus {
+  border-color: rgb(24, 226, 10); /* Change the border color on focus */
+}
+
+.errorMessage {
+  color: red;
+}
+
+.labelStyle {
+  font-weight: 500;
+  font-size: 1.15rem;
+}
+
+.labelUseMyStyle {
+  text-decoration: underline;
+  cursor: pointer;
+  width: 200px;
+  font-style: italic;
+}

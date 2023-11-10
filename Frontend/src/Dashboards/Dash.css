@@ -1,0 +1,167 @@
+/* styles.css */
+
+.delivery-details-container{
+  background-color: rgba(0, 0, 0, 0);
+  width: 95%;
+}
+
+
+
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 380px;
+  height: 120px;
+  background-color:rgba(0, 0, 0, 0.8);
+  color: rgb(245, 238, 238);
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 20px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card-header h2 {
+  margin-left: 10px;
+}
+
+.card-content {
+  color: #555;
+}
+
+
+.profile{
+
+
+  width: 400px;
+  background-color: rgba(168, 163, 168, 0.9);
+  height: 105%;
+  color: black;
+  text-size-adjust: 20px;
+   margin-top: 33.7px;
+
+  
+}
+.admin-dashboard{
+  background-color: black;
+  color: #fff;
+
+  
+}
+
+
+.admin-image{
+  width: 200px;
+  height: 200px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 50%;
+}
+
+.setting-icon{
+  width: 30px; /* Add your desired width */
+  height: 30px; /* Add your desired height */
+  cursor: pointer;
+  text-align: justify;
+   
+}
+
+.logout-icon {
+  width: 30px; /* Add your desired width */
+  height: 30px; /* Add your desired height */
+  cursor: pointer;
+  text-align: justify;
+  
+}
+
+.icon{
+  padding-top: 10px;
+  padding-left: 30px;
+}
+
+/* Add these styles to your existing CSS file or create a new one */
+
+.button-container {
+  display: flex;
+  gap: 10px; /* Adjust the gap between buttons as needed */
+  margin-top: 10px;
+  padding-left: 25px;
+  
+
+}
+
+.setting-button {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px ;
+  background-color: rgb(26, 41, 4); /* Add your background color */
+  cursor: pointer;
+  border-radius: 5px;
+  
+
+  
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: red; /* Add your background color */
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+
+.profile-info{
+  text-align: center;
+}
+
+
+
+/*modal */
+/* Add these styles to your CSS file or style tag */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background: #121212;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+
+
+.button-container {
+  margin-top: 10px;
+}
+
+.profile-image{
+  margin-top: 100px;
+}
