@@ -26,13 +26,56 @@ class Database {
 const db = new Database(DB_URL);
 db.makeConnection();
 
+const responseNew = {
+  table: {
+    data: [
+      {
+        item: 'Node.js',
+        description: 'Event-driven I/O server-side JavaScript environment based on V8.',
+        price: '$10.99'
+      },
+      {
+        item: 'Mailgen',
+        description: 'Programmatically create beautiful e-mails using plain old JavaScript.',
+        price: '$1.99'
+      }
+    ],
+    columns: {
+      // Optionally, customize the column widths
+      customWidth: {
+        item: '20%',
+        price: '15%'
+      },
+      // Optionally, change column text alignment
+      customAlignment: {
+        price: 'right'
+      }
+    }
+  }
+}
+
 class EmailFactory {
+  
   static createEmail(input, mailGenerator, EMAIL) {
     const response = {
       body: {
         title: 'Welcome to EcomEAD!',
-        name: 'Dear Sir/Madam',
+        greeting: 'Dear Sir/Madam',
         intro: 'Your order is being processed, and you will receive an email once it\'s on its way. If you have any questions or need assistance, please don\'t hesitate to contact our support team at ecomeadinfo@gmail.com.',
+        table: {
+          data: input.orderDetails,
+          columns: {
+            // Optionally, customize the column widths
+            customWidth: {
+              item: '20%',
+              price: '15%'
+            },
+            // Optionally, change column text alignment
+            customAlignment: {
+              price: 'right'
+            }
+          }
+        },
         outro: 'Thank you for choosing EcomEAD!',
       },
     };

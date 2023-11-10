@@ -49,16 +49,15 @@ class AssertQueue {
 }
 
 class SendQueue {
-    constructor(channel,emailBody) {
+    constructor(channel,dataContent) {
         this.channel = channel,
-        this.emailBody = emailBody
+        this.dataContent = dataContent
     }
 
     async sendQueue() {
-        console.log('hava',this.emailBody);
         try {
-            await this.channel.sendToQueue("jobs", Buffer.from(JSON.stringify(this.emailBody)));
-            logMessage.logger(`Job sent successfully ${this.emailBody.email}`)
+            await this.channel.sendToQueue("jobs", Buffer.from(JSON.stringify(this.dataContent)));
+            logMessage.logger(`Job sent successfully ${this.dataContent.email}`)
         } catch (err) {
             logMessage.logger("ERROR sending queue", err)
         }
@@ -86,7 +85,7 @@ class ConnectionTerminator {
 }
 
 const connect = async (req, res) => {
-    const emailBody = req.body;
+    const dataContent = req.body;
 
     const AMQPServerConnectorObject = new AMQPServerConnector("amqp://localhost:5672");
     const connection = await AMQPServerConnectorObject.connector();
@@ -96,7 +95,7 @@ const connect = async (req, res) => {
         const channel = await AMQPChannelCreatorObject.createChannel();
         if (channel !== null) {
             const AssertQueueObject = new AssertQueue(channel);
-            const SendQueueObject = new SendQueue(channel,emailBody);
+            const SendQueueObject = new SendQueue(channel,dataContent);
             await AssertQueueObject.assertQueue();
             await SendQueueObject.sendQueue();
 
