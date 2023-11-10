@@ -24,8 +24,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
+
+
+
 @Service
-public class UserService {
+public class UserService implements UserServiceInterface{
 
     @Autowired
     private UserRepository useRepository;
@@ -41,19 +44,21 @@ public class UserService {
 
 
 
-
+    @Override
     public List<User> getAllUsers() {return UserService.this.useRepository.findAll();}
-
+    @Override
     public Optional<User> getUserById(Long id) {return UserService.this.useRepository.findById(id);}
-
+    @Override
     public Optional<User> getUserByEmail(String email) {return UserService.this.useRepository.findByEmail(email);}
+    @Override
     public void deleteUser(Long id) {UserService.this.useRepository.deleteById(id);}
+    @Override
     public void deleteAll(){UserService.this.useRepository.deleteAll();}
 
 
 
 
-
+    @Override
     public User saveUser(SaveDTO saveDTO) {
         String password = saveDTO.getPassword();
         String confirmPass =saveDTO.getConfirmPassword();
@@ -75,7 +80,7 @@ public class UserService {
             }
     }
 
-
+    @Override
     public String authenticateUser(String email, String password) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         Optional<User> result = UserService.this.useRepository.findByEmail(email);
@@ -91,8 +96,8 @@ public class UserService {
 
 
 
-
-    public User updateUser(User existingCustomer, User updatedCustomer) {
+    @Override
+    public void updateUser(User existingCustomer, User updatedCustomer) {
         existingCustomer.setName(updatedCustomer.getName());
         existingCustomer.setPhoneNumber(updatedCustomer.getPhoneNumber());
         existingCustomer.setEmail(updatedCustomer.getEmail());
@@ -102,9 +107,11 @@ public class UserService {
             if(updatedCustomer.getNicNumber()!=null){
                 existingCustomer.setNicNumber(updatedCustomer.getNicNumber());
             }
-        return UserService.this.useRepository.save(existingCustomer);
+        UserService.this.useRepository.save(existingCustomer);
     }
 
+
+    @Override
     public void sendResetPasswordVerityEmail(String email,String verifyCode){
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(email);
@@ -116,7 +123,7 @@ public class UserService {
             deleteOptAuto(email);
     }
 
-
+    @Override
     public void updateOptTable(String email){
         Opt optList = optRepository.findByEmail(email);
         String verifyCode = verifyCode();
@@ -133,6 +140,7 @@ public class UserService {
     }
 
 
+    @Override
     public boolean resetThePassword(ResetPasswordDTO resetPasswordDTO) {
         Opt optionalOpt = optRepository.findByEmail(resetPasswordDTO.getEmail());
             if (optionalOpt.getVerifyCode().equals(resetPasswordDTO.getVerificationCode())) {
@@ -152,26 +160,27 @@ public class UserService {
             } else {return false;}
     }
 
-        public String verifyCode() {
-            // Create an instance of the Random class
-            verificationCode = new Random();
-            // Generate a random integer with 6 digits
-            int min = 100000; // Minimum value (inclusive)
-            int max = 999999; // Maximum value (inclusive)
+    @Override
+    public String verifyCode() {
+        // Create an instance of the Random class
+        verificationCode = new Random();
+        // Generate a random integer with 6 digits
+        int min = 100000; // Minimum value (inclusive)
+        int max = 999999; // Maximum value (inclusive)
 
-            return String.valueOf(verificationCode.nextInt(max - min + 1) + min);
+        return String.valueOf(verificationCode.nextInt(max - min + 1) + min);
+    }
+
+    @Override
+    public void deleteOptAuto(String email) {
+        try {
+            // Sleep for 3 minutes (300,000 milliseconds)
+            Thread.sleep( 115000);
+            optRepository.deleteById(optRepository.findByEmail(email).getOptId());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-
-
-        public void deleteOptAuto(String email) {
-            try {
-                // Sleep for 3 minutes (300,000 milliseconds)
-                Thread.sleep( 115000);
-                optRepository.deleteById(optRepository.findByEmail(email).getOptId());
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+    }
 
 }
 
