@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const NavBar: React.FC = () => {
 
-  let customerId = "customer123";
+  let customerId = "customer789";
   return (
     <div className="navbar">
       <div className="logo">

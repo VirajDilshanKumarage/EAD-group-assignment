@@ -8,9 +8,9 @@ import axios from 'axios';
 import sampleImage from '../../Asset/sample_product.png'
 
 interface ProductCardProps {
-  productId: string; // Adjusted to match the backend model
-  productName: string; // Adjusted to match the backend model
-  productDescription: string; // Adjusted to match the backend model
+  productId: string; 
+  productName: string; 
+  productDescription: string;
   price: number;
   productCount: number;
 }
@@ -19,7 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
-  const customerId="customer123"
+  const customerId="customer789"
 
   const addToCartHandler = async () => {
     console.log("CustomerId: ",customerId,", ProductId: ",props.productId,", Quantity: ", quantity,", Price:", props.price);
@@ -32,6 +32,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
         customerId:customerId
       });
       console.log(response.data.message);
+      alert(response.data.message);
     } catch (error) {
       console.error('Error adding to cart:', error);
       setError('An error occurred while adding the item to the cart');
@@ -58,6 +59,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
         <Card.Title className="card-title">{props.productName}</Card.Title>
         <Card.Text className="card-text">{props.productDescription}</Card.Text>
         <Card.Text className="card-text">Quantity: {props.productCount}</Card.Text>
+        <Card.Text className="card-text product-price">Price (for each): Rs.{props.price}</Card.Text>
         <div className="quantity-controls">
           <Button variant="outline-primary" className="quantity-btn" onClick={decreaseQuantity}>
             <FaMinus />

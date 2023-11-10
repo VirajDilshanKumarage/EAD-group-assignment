@@ -13,7 +13,11 @@
     border-radius:8px;
 
   }
-  
+  .product-price{
+    color: #006400 !important;
+    font-weight:bold;
+    margin-top:5px;
+  }
   .card-title {
     font-size: 1.2rem;
     font-weight: bold;
