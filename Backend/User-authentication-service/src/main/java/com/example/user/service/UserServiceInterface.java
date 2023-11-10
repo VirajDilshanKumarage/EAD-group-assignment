@@ -7,6 +7,10 @@ import com.example.user.entity.User;
 import java.util.List;
 import java.util.Optional;
 
+/*
+* this is the User Service Interface this describes the methods that are implemented in User Service class
+* */
+
 public interface UserServiceInterface {
 
     public List<User> getAllUsers();
