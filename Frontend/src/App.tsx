@@ -25,7 +25,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     // Save the login status to localStorage
-    localStorage.setItem('isLoggedIn', String(isLoggedIn));
+    localStorage.setItem('isLoggedIn', String(true));
   }, [isLoggedIn]);
 
   const handleLogin = () => {
