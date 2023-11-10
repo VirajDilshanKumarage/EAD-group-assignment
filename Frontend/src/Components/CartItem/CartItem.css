@@ -1,73 +1,80 @@
 .cart-item {
-    background-color: rgba(201, 255, 211, 0.7);
-    padding: 5px;
-    margin: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: #0d7b5a;
-    text-decoration: none;
-    border-radius: 8px;
-    display: flex;
-  }
-  
-  .cart-item:hover {
-    transition: transform 0.3s;
-    transform: scale(1.01);
-  }
-  
-  .cart-item .productImage {
-    flex: 2;
-  }
-  .cart-item .productInfo {
-    flex: 6;
-  }
-  .cart-item .quantityChange {
-    flex: 1;
-  }
-  .cart-item .deleteItem{
-    flex:1;
-  }
-  .cart-item .productImage img {
-    height: 120px;
-    width: 120px;
-    border-radius: 15px;
-  }
-  .cart-item h3 {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  .cart-item p {
-    margin: 5px 0;
-  }
-  
-  .cart-item p:first-of-type {
-    color: rgb(32, 01, 13,0.7);
-  }
-  
-  .cart-item p:last-of-type {
-    color: rgb(32, 01, 13,0.7);
-  }
-  .quantityChange {
-    display: flex;
-    align-items: center;
-    
-  }
-  
-  .icon-qty, {
-    font-size: 28px; 
-    color: rgb(32, 01, 13,0.7);
-    margin: 0 10px; 
-    cursor:pointer;
-  }
+  background-color: rgba(201, 255, 211, 0.7);
+  padding: 5px;
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #0d7b5a;
+  text-decoration: none;
+  border-radius: 8px;
+  display: flex;
+}
 
-  .deleteItem {
-    font-size: 20px; 
-    margin: 35px 0; 
-    cursor:pointer;
-  }
+.cart-item:hover {
+  transition: transform 0.3s;
+  transform: scale(1.01);
+}
 
-  .deleteItem:hover {
-    margin: 35px 0; 
-    cursor:pointer;
-    color:red;
-  }
+.cart-item .productImage {
+  flex: 2;
+}
+.cart-item .productInfo {
+  flex: 6;
+}
+.cart-item .quantityChange {
+  flex: 1;
+}
+.cart-item .deleteItem{
+  flex:1;
+}
+.cart-item .productImage img {
+  height: 120px;
+  width: 120px;
+  border-radius: 15px;
+}
+.cart-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.cart-item p {
+  margin: 5px 0;
+}
+
+.cart-item p:first-of-type {
+  color: rgb(32, 01, 13,0.7);
+}
+
+.cart-item p:last-of-type {
+  color: rgb(32, 01, 13,0.7);
+}
+.quantityChange {
+  display: flex;
+  align-items: center;
+  
+}
+
+.icon-qty {
+  font-size: 26px; 
+  background-color: rgba(201, 255, 211, 0.7);
+  margin: 0 10px; 
+  cursor:pointer;
+}
+.icon-qty:hover{
+  scale:1.1;
+  color:grey;
+}
+
+.deleteItem {
+  font-size: 20px; 
+  margin: 35px 0; 
+  cursor:pointer;
+  text-align:center;
+  padding-top:18px;
+}
+
+.deleteItem:hover {
+  margin: 35px 0; 
+  cursor:pointer;
+  color:red;
+  scale:1.1;
+}

@@ -12,6 +12,7 @@ import GetOPTForm from './Forms/GetOPT';
 import PasswordResetForm from './Forms/ResetPassword';
 import Cart from './Dashboards/Cart/Cart';
 import Checkout from './Dashboards/Checkout/Checkout';
+import ProductsPage from './Dashboards/ProducList/ProductsListPage';
 
 
 
@@ -46,6 +47,9 @@ const App: React.FC = () => {
         <Route path="/customer-dashboard/add-to-cart/:customerId" element={<Cart />} />
 
         <Route path="/customer-dashboard/checkout/:customerId" element={<Checkout/>} />
+
+        <Route path="/customer-dashboard/products" element={<ProductsPage/>} />
+
 
 
         <Route
