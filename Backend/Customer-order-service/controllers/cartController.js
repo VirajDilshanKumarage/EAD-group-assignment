@@ -20,6 +20,7 @@ class CartController {
 
         const productWithTotalPrice = {
           productId: cartItem.productId,
+          productName:cartItem.productName,
           quantity: cartItem.quantity,
           price: cartItem.price,
           totalItemPrice: itemPrice,
