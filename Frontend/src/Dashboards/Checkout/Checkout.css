@@ -1,0 +1,64 @@
+.checkout-page .details{
+    display:flex;
+    width:100%;
+}
+
+.checkout-page .payment-details{
+    flex:2;
+    height:100%
+}
+.checkout-page .items-details{
+
+    flex:1;
+    height:100%
+}
+
+.checkout-page h2{
+    margin:25px;
+    text-align: center;
+    color: white;
+    background: rgba(1, 50, 32, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.checkout-page .items-details ul, .checkout-page .payment-details-forms{
+    color: rgba(1, 50, 32, 0.9);
+    margin: 5px 25px;
+    background: rgba(1, 50, 32, 0.2);
+    padding: 10px;
+    border-radius: 8px;
+
+}
+
+.checkout-page .items-details ul li{
+    text-decoration:none;
+}
+
+.checkout-page ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .checkout-page  li {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius:8px;
+    background-color: rgba(249, 249, 249, 0.7);
+  }
+  
+  .checkout-page p {
+    font-weight: bold;
+    color: #777;
+  }
+
+  .checkout-page ul p {
+    font-weight: bold;
+    color: red;
+    text-align:center;
+  }
+
+  .checkout-page .error-found-porducts{
+    margin-left:25px;
+  }

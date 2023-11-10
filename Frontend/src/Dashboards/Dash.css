@@ -1,0 +1,51 @@
+/* styles.css */
+
+
+
+
+
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 380px;
+  height: 120px;
+  background-color: #fff;
+  color: black;
+  padding: 50px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.card-header h2 {
+  margin-left: 10px;
+}
+
+.card-content {
+  color: #555;
+}
+
+
+.profile{
+  background-color: aqua;
+  margin-left: 10px;
+  height: 490px;
+  border-radius: 8px;
+}
