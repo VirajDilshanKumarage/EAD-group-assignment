@@ -26,7 +26,7 @@ const DeliveryDashboard = () => {
 
   const getDeliveryLists = async () => {
     try {
-      const delivery = await fetch("http://localhost:5000/delivery");
+      const delivery = await fetch("http://localhost:8888/delivery");
       const { data } = await delivery.json();
       setDelivery(data)
     } catch (error) {
@@ -53,7 +53,7 @@ const DeliveryDashboard = () => {
   })
   const onSubmit = async (data: any) => {
     if (deliveryId === '') {
-      const response = await fetch('http://localhost:5000/delivery/create', {
+      const response = await fetch('http://localhost:8888/delivery/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ const DeliveryDashboard = () => {
       _id: deliveryId
     }
 
-    const response = await fetch('http://localhost:5000/delivery/update', {
+    const response = await fetch('http://localhost:8888/delivery/update', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
