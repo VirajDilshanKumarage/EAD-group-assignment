@@ -14,6 +14,8 @@ import CustomerDetails from './Page/CustomerDetails';
 import EmployeeDetails from './Page/EmployeeDetails';
 import Cart from './Dashboards/Cart/Cart';
 import Checkout from './Dashboards/Checkout/Checkout';
+import AddNewProduct from './Components/Inventory-components/AddnewProducts';
+import ViewProduct from './Components/Inventory-components/ViewProducts';
 
 
 
@@ -62,6 +64,7 @@ const App: React.FC = () => {
 
         
 
+       
         <Route path="/customer-dashboard/checkout" element={<Checkout/>} />
 
 
@@ -79,6 +82,9 @@ const App: React.FC = () => {
         <Route path="/customer-Details" element={<CustomerDetails/>} />
 
         <Route path="/employee-Details" element={<EmployeeDetails/>} />
+
+        <Route path="/add-new-product" element = {<AddNewProduct/>}/>
+        <Route path="/view-edit-products" element = {<ViewProduct/>}/>
 
       </Routes>
     </Router>

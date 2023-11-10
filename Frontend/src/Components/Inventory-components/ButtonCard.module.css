@@ -1,0 +1,35 @@
+.aroundDiv{
+    width: 500px;
+    height: 150px;
+    border: 1.2px solid #4cd137;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.aroundDiv:hover {
+    border: 1px solid white;
+    background-color: #4cd137;
+    
+}
+
+.header{
+    width: 500px;
+    height: 150px;
+    text-align: center;
+    margin-top: 40px;
+    color: #2ecc71;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.header:hover{
+    color: #f5f6fa;
+}
+
+.iconContainer{
+    margin-top: 20px;
+    text-align: center;
+    
+
+}
+
