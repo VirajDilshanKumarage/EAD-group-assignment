@@ -1,11 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const orderConfirmationRoutes = require("./routes/orderConfRoutes");
-const notificationRoute = require("./routes/notification");
+//const notificationRoute = require("./routes/notification");
 const database = require('./databaseConnection');
+const cors = require("cors");
+const mongoose = require('mongoose');
 
-const orderConfirmationRoutes = require('./routes/orderConfRoutes');
-const notificationRoute = require('./routes/notification');
 
 class App {
   constructor() {
@@ -39,7 +39,6 @@ class App {
 //database.connect();
   setupRoutes() {
     this.app.use('/', orderConfirmationRoutes);
-    this.app.use('/', notificationRoute);
 
     this.app.get('/', (req, res) => {
       res.json({ message: 'Hi' });
