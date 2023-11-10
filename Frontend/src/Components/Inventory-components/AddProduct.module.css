@@ -1,0 +1,28 @@
+.formAroundContainer{
+    margin-top: 30px;
+    align-items: center;
+}
+
+.datePicker{
+    margin-left:20px ;
+    height: 30px;
+    border-radius: 5px;
+    background-color: aliceblue;
+    color: rgb(122, 122, 122);
+}
+.header{
+    margin-top: 40px;
+    text-align: center;
+}
+.submitButton{
+    width: 450px;
+    border: 1px solid rgb(166, 255, 0);
+    border-radius: 5px;
+    background-color: rgba(166, 255, 0);
+    text-align: center;
+}
+.submitButton:hover{
+    border: 1px solid rgb(3, 167, 11);
+    background-color: rgb(3, 167, 11);
+   
+}
