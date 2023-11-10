@@ -1,11 +1,8 @@
 const express = require('express');
-const notification = require('../models/notification');
-
 const router = express.Router();
+//const failedEmailHandler = require('../controller/notificationController');
 
-//let notificationIdCounter = 1; // Initialize the counter
-const failedEmailHandler = require("../controller/notificationController");
+// Define route to save, update, or delete notification
 
-// Save, update, or delete notification
-router.post('/post/save',failedEmailHandler.failedMailHandler)
+
 module.exports = router;

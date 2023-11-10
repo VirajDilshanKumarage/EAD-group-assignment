@@ -1,20 +1,34 @@
 const mongoose = require('mongoose');
-const postSchema = new mongoose.Schema({
-    notificationId: {
-        type: Number, // Use Number type for integers
-        required: true
-    },
-    email: {
-        type: String, // Keep email as a string
-        required: true
-    },
-    sendError: {
-        type: Number, // Use Number type for integers
-        required: true
-    }
-});
 
-const Notification = mongoose.model('Notification',postSchema);
-module.exports =  Notification;
+class NotificationModel {
+  constructor() {
+    this.Notification = mongoose.model('Notification', this.getSchema());
+  }
 
-//module.exports = mongoose.model('Notification',postSchema);
+  getSchema() {
+    const postSchema = new mongoose.Schema({
+      notificationId: {
+        type: Number,
+        required: true,
+      },
+      email: {
+        type: String,
+        required: true,
+      },
+      sendError: {
+        type: Number,
+        required: true,
+      },
+    });
+
+    return postSchema;
+  }
+
+  getModel() {
+    return this.Notification;
+  }
+}
+
+const notificationModel = new NotificationModel();
+
+module.exports = notificationModel.getModel();
