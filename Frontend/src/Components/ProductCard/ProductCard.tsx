@@ -22,14 +22,15 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
   const customerId="customer789"
 
   const addToCartHandler = async () => {
-    console.log("CustomerId: ",customerId,", ProductId: ",props.productId,", Quantity: ", quantity,", Price:", props.price);
+    console.log("CustomerId: ",customerId,", ProductId: ",props.productId,", Quantity: ", quantity,", Price:", props.price, ", Name:", props.productName);
     try {
       setLoading(true);
       const response = await axios.post('http://localhost:8000/cart/add-to-cart', {
         productId: props.productId,
         quantity: quantity,
         price: props.price,
-        customerId:customerId
+        customerId:customerId,
+        productName:props.productName
       });
       console.log(response.data.message);
       alert(response.data.message);

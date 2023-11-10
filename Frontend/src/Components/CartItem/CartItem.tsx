@@ -66,7 +66,7 @@ const CartItem: React.FC<CartItemProps> = ({ productName, quantity, price, total
                 <img src={sampleProduct} alt="" />
             </div>
             <div className="productInfo">
-                <h3>Talawakelle Tea 1Kg - Pure Ceylon Black Tea - Tea Pouch{productName}</h3>
+                <h3>Product: {productName}</h3>
                 <p>Price: Rs.{price}</p>
                 <p>Total Price: Rs.{totalItemPrice}</p>
                 <p>Quantity:{quantity}</p>
