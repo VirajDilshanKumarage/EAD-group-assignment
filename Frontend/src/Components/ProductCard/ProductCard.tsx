@@ -59,7 +59,7 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
         <Card.Title className="card-title">{props.productName}</Card.Title>
         <Card.Text className="card-text">{props.productDescription}</Card.Text>
         <Card.Text className="card-text">Quantity: {props.productCount}</Card.Text>
-        <Card.Text className="card-text product-price">Price (for each): Rs.{props.price}</Card.Text>
+        <Card.Text className="card-text product-price">Price (each): Rs.{props.price}</Card.Text>
         <div className="quantity-controls">
           <Button variant="outline-primary" className="quantity-btn" onClick={decreaseQuantity}>
             <FaMinus />
