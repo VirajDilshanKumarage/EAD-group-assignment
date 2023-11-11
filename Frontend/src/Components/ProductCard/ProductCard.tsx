@@ -21,6 +21,11 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
   const [quantity, setQuantity] = useState(1);
   const customerId="customer789"
 
+  if (props.productCount <= 0) {
+    // Product count is zero or less, don't render the card
+    return null;
+  }
+
   const addToCartHandler = async () => {
       console.log("CustomerId: ", customerId, ", ProductId: ", props.productId, ", Quantity: ", quantity, ", Price:", props.price, ", Name:", props.productName);
     
