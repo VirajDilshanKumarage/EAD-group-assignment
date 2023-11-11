@@ -1,10 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const orderConfirmationRoutes = require("./routes/orderConfRoutes");
-//const notificationRoute = require("./routes/notification");
-const database = require('./databaseConnection');
 const cors = require("cors");
 const mongoose = require('mongoose');
+const databaseConnection = require('./databaseConnection');
 
 
 class App {
@@ -26,17 +25,17 @@ class App {
   }
 
   connectToDatabase() {
-    mongoose
-      .connect(this.DB_URL)
-      .then(() => {
-        console.log('DB connected');
-      })
-      .catch((err) => console.log('DB connection error', err));
+    const dbInstance = new databaseConnection.Database;
+    dbInstance.setUrl(this.DB_URL);
+    dbInstance.connect();
+    // mongoose
+    //   .connect(this.DB_URL)
+    //   .then(() => {
+    //     console.log('DB connected');
+    //   })
+    //   .catch((err) => console.log('DB connection error', err));
   }
 
-// app.listen(PORT);
-// console.log("Backend is up");
-//database.connect();
   setupRoutes() {
     this.app.use('/', orderConfirmationRoutes);
 

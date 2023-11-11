@@ -12,47 +12,24 @@ const notification = require('../models/notification.js');
 
 const DB_URL = 'mongodb+srv://chandulakavishka0:ecomEAD@cluster0.bcd7kuy.mongodb.net/';
 //make the database connection
-class Database {
-  constructor(DB_URL) {
-    this.DB_URL = DB_URL
-  }
+// class Database {
+//   constructor(DB_URL) {
+//     this.DB_URL = DB_URL
+//   }
 
-  makeConnection() {
-    databaseConnection.db_connection(this.DB_URL)
-  }
+//   makeConnection() {
+//     databaseConnection.db_connection(this.DB_URL)
+//   }
 
-}
+// }
 
-const db = new Database(DB_URL);
-db.makeConnection();
+// const db = new Database(DB_URL);
+// db.makeConnection();
 
-const responseNew = {
-  table: {
-    data: [
-      {
-        item: 'Node.js',
-        description: 'Event-driven I/O server-side JavaScript environment based on V8.',
-        price: '$10.99'
-      },
-      {
-        item: 'Mailgen',
-        description: 'Programmatically create beautiful e-mails using plain old JavaScript.',
-        price: '$1.99'
-      }
-    ],
-    columns: {
-      // Optionally, customize the column widths
-      customWidth: {
-        item: '20%',
-        price: '15%'
-      },
-      // Optionally, change column text alignment
-      customAlignment: {
-        price: 'right'
-      }
-    }
-  }
-}
+const dbInstance = new databaseConnection.Database;
+dbInstance.setUrl(DB_URL);
+dbInstance.connect();
+
 
 class EmailFactory {
   
@@ -174,7 +151,6 @@ class ChannelConsumer {
               // Handle email error and database interactions
               const email = input.email;
               try {
-                console.log('butterfly', email);
                 // Check if a document with the email exists in the database
                 const existingDocument = await findDocment.findDocment(email);
 
