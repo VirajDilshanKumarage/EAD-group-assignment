@@ -20,6 +20,7 @@ class CartController {
 
         const productWithTotalPrice = {
           productId: cartItem.productId,
+          productName:cartItem.productName,
           quantity: cartItem.quantity,
           price: cartItem.price,
           totalItemPrice: itemPrice,
@@ -41,7 +42,7 @@ class CartController {
 
   // Function to add an item to the cart
   async addToCart(req, res) {
-    const { customerId, productId, quantity, price } = req.body;
+    const { customerId, productId, quantity, price,productName } = req.body;
 
     try {
       let cartItem = await CartItem.findOne({ customerId, productId });
@@ -54,6 +55,7 @@ class CartController {
           productId,
           quantity,
           price,
+          productName
         });
       }
 
