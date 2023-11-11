@@ -5,22 +5,30 @@ const orderSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  items: [
-    {
-      productId: {
-        type: String,
-        required: true,
+  items: {
+    type: [
+      {
+        productId: {
+          type: String,
+          required: true,
+        },
+        quantity: {
+          type: Number,
+          required: true,
+        },
+        price: {
+          type: Number,
+          required: true,
+        },
       },
-      quantity: {
-        type: Number,
-        required: true,
+    ],
+    validate: {
+      validator: function (items) {
+        return items.length > 0;
       },
-      price: {
-        type: Number,
-        required: true,
-      },
+      message: 'Items array must contain at least one element.',
     },
-  ],
+  },
   status: {
     type: String,
     required: true,
@@ -31,8 +39,11 @@ const orderSchema = new mongoose.Schema({
   },
   orderDate: {
     type: Date,
-    required: true,
     default: Date.now,
+  },
+  totalPrice: {
+    type: Number,
+    required: true,
   },
 });
 

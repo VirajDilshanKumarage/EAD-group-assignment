@@ -57,6 +57,7 @@ class OrderController {
     const status = req.body.status;
     const deliveryAddress = req.body.deliveryAddress;
     const orderDate = req.body.orderDate;
+    const totalPrice = req.body.totalPrice;
 
     try {
       const newOrder = new Order({
@@ -65,15 +66,16 @@ class OrderController {
         status: status,
         deliveryAddress: deliveryAddress,
         orderDate: orderDate,
+        totalPrice: totalPrice,
       });
 
       // Save the new order to the database
       const savedOrder = await newOrder.save();
 
-      // send the order confirmation event to Inventory service
-      await sendOrderConfirmationToInventory(savedOrder);
-      // send the order confirmation event to Notification service
-      await sendOrderConfirmationToNotification(savedOrder);
+      // // send the order confirmation event to Inventory service
+      // await sendOrderConfirmationToInventory(savedOrder);
+      // // send the order confirmation event to Notification service
+      // await sendOrderConfirmationToNotification(savedOrder);
 
       res.status(201).json({
         message: 'Order created successfully',
