@@ -30,29 +30,17 @@ const dbInstance = new databaseConnection.Database;
 dbInstance.setUrl(DB_URL);
 dbInstance.connect();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of fc74573 (attached orderDetails into email)
 class EmailFactory {
-  
   static createEmail(input, mailGenerator, EMAIL) {
     const response = {
       body: {
         title: 'Welcome to EcomEAD!',
-        greeting: 'Dear Sir/Madam',
+        name: 'Dear Sir/Madam',
         intro: 'Your order is being processed, and you will receive an email once it\'s on its way. If you have any questions or need assistance, please don\'t hesitate to contact our support team at ecomeadinfo@gmail.com.',
-        table: {
-          data: input.orderDetails,
-          columns: {
-            // Optionally, customize the column widths
-            customWidth: {
-              item: '20%',
-              price: '15%'
-            },
-            // Optionally, change column text alignment
-            customAlignment: {
-              price: 'right'
-            }
-          }
-        },
         outro: 'Thank you for choosing EcomEAD!',
       },
     };
