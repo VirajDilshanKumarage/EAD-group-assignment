@@ -22,26 +22,34 @@ const ProductCard: React.FC<ProductCardProps> = (props) => {
   const customerId="customer789"
 
   const addToCartHandler = async () => {
-    console.log("CustomerId: ",customerId,", ProductId: ",props.productId,", Quantity: ", quantity,", Price:", props.price, ", Name:", props.productName);
-    try {
-      setLoading(true);
-      const response = await axios.post('http://localhost:8000/cart/add-to-cart', {
-        productId: props.productId,
-        quantity: quantity,
-        price: props.price,
-        customerId:customerId,
-        productName:props.productName
-      });
-      console.log(response.data.message);
-      alert(response.data.message);
-    } catch (error) {
-      console.error('Error adding to cart:', error);
-      setError('An error occurred while adding the item to the cart');
-      alert('An error occurred while adding the item to the cart');
-    } finally {
-      setLoading(false);
-    }
-  };
+      console.log("CustomerId: ", customerId, ", ProductId: ", props.productId, ", Quantity: ", quantity, ", Price:", props.price, ", Name:", props.productName);
+    
+      try {
+        setLoading(true);
+    
+        // Check if the selected quantity exceeds the available quantity
+        if (quantity > props.productCount) {
+          setError('Selected quantity exceeds available quantity');
+          alert('Selected quantity exceeds available quantity');
+        } else {
+          const response = await axios.post('http://localhost:8000/cart/add-to-cart', {
+            productId: props.productId,
+            quantity: quantity,
+            price: props.price,
+            customerId: customerId,
+            productName: props.productName
+          });
+          console.log(response.data.message);
+          alert(response.data.message);
+        }
+      } catch (error) {
+        console.error('Error adding to cart:', error);
+        setError('An error occurred while adding the item to the cart');
+        alert('An error occurred while adding the item to the cart');
+      } finally {
+        setLoading(false);
+      }
+    };
 
   const increaseQuantity = () => {
     setQuantity(quantity + 1);
