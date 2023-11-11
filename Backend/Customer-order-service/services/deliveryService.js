@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const sendModifyOrderToDelivery = async (order) => {
-  const deliveryServiceUrl = 'http://delivery-service/api/modifyAddress';
+  const deliveryServiceUrl = 'http://localhost:8888/delivaryAdrress';
   const modifiedOrder = {
     orderDetails: order,
   };
