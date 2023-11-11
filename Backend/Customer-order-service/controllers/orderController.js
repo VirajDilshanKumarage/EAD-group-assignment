@@ -72,10 +72,10 @@ class OrderController {
       // Save the new order to the database
       const savedOrder = await newOrder.save();
 
-      // // send the order confirmation event to Inventory service
-      // await sendOrderConfirmationToInventory(savedOrder);
-      // // send the order confirmation event to Notification service
-      // await sendOrderConfirmationToNotification(savedOrder);
+      // send the order confirmation event to Inventory service
+      await sendOrderConfirmationToInventory(savedOrder);
+      // send the order confirmation event to Notification service
+      await sendOrderConfirmationToNotification(savedOrder);
 
       res.status(201).json({
         message: 'Order created successfully',
